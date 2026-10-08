@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis Compras</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#007aff">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+    >
+
+    <meta
+    name="apple-mobile-web-app-title"
+    content="Mis Compras"
+    >
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ENCABEZADO -->
+        <header class="header">
+
+            <div>
+                <p class="saludo">Mi organizador</p>
+                <h1>Mis compras 🛒</h1>
+            </div>
+
+            <button id="btnAgregar" class="btn-agregar">
+                +
+            </button>
+
+        </header>
+
+
+        <!-- RESUMEN -->
+        <section class="resumen">
+
+            <div class="card-resumen">
+                <span>Gasto del día</span>
+                <strong id="totalDia">$0</strong>
+            </div>
+
+            <div class="card-resumen">
+                <span>Compras</span>
+                <strong id="cantidadCompras">0</strong>
+            </div>
+
+        </section>
+
+
+        <!-- DÍAS DE LA SEMANA -->
+        <section class="dias">
+
+            <button class="dia activo" data-dia="lunes">
+                <span>Lun</span>
+                <small>1</small>
+            </button>
+
+            <button class="dia" data-dia="martes">
+                <span>Mar</span>
+                <small>2</small>
+            </button>
+
+            <button class="dia" data-dia="miercoles">
+                <span>Mié</span>
+                <small>3</small>
+            </button>
+
+            <button class="dia" data-dia="jueves">
+                <span>Jue</span>
+                <small>4</small>
+            </button>
+
+            <button class="dia" data-dia="viernes">
+                <span>Vie</span>
+                <small>5</small>
+            </button>
+
+            <button class="dia" data-dia="sabado">
+                <span>Sáb</span>
+                <small>6</small>
+            </button>
+
+            <button class="dia" data-dia="domingo">
+                <span>Dom</span>
+                <small>7</small>
+            </button>
+
+        </section>
+
+
+        <!-- TÍTULO DEL DÍA -->
+        <section class="titulo-dia">
+
+            <div>
+                <p>Compras programadas</p>
+                <h2 id="nombreDia">Lunes</h2>
+            </div>
+
+            <button id="btnFiltro" class="btn-filtro">
+                🔎
+            </button>
+
+        </section>
+
+
+        <!-- LISTA DE COMPRAS -->
+        <main id="listaCompras" class="lista-compras">
+
+        </main>
+
+
+        <!-- MENSAJE CUANDO NO HAY COMPRAS -->
+        <div id="sinCompras" class="sin-compras">
+
+            <div class="icono-vacio">🛍️</div>
+
+            <h3>No tienes compras</h3>
+
+            <p>
+                Agrega las compras que necesitas realizar.
+            </p>
+
+            <button onclick="abrirFormulario()">
+                + Agregar compra
+            </button>
+
+        </div>
+
+
+        <!-- MODAL -->
+        <div id="modal" class="modal">
+
+            <div class="modal-contenido">
+
+                <div class="modal-header">
+
+                    <h2 id="tituloModal">
+                        Nueva compra
+                    </h2>
+
+                    <button id="cerrarModal">
+                        ×
+                    </button>
+
+                </div>
+
+
+                <form id="formCompra">
+
+                    <label>
+                        ¿Qué necesitas comprar?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="producto"
+                        placeholder="Ej: Arroz, gasolina, zapatos..."
+                        required
+                    >
+
+
+                    <label>
+                        Categoría
+                    </label>
+
+                    <select id="categoria">
+
+                        <option value="mercado">
+                            🛒 Mercado
+                        </option>
+
+                        <option value="comida">
+                            🍔 Comida
+                        </option>
+
+                        <option value="transporte">
+                            🚗 Transporte
+                        </option>
+
+                        <option value="hogar">
+                            🏠 Hogar
+                        </option>
+
+                        <option value="farmacia">
+                            💊 Farmacia
+                        </option>
+
+                        <option value="ropa">
+                            👕 Ropa
+                        </option>
+
+                        <option value="tecnologia">
+                            📱 Tecnología
+                        </option>
+
+                        <option value="otros">
+                            📦 Otros
+                        </option>
+
+                    </select>
+
+
+                    <label>
+                        Valor
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valor"
+                        placeholder="Ej: 25000"
+                        min="0"
+                        required
+                    >
+
+
+                    <label>
+                        Descripción
+                    </label>
+
+                    <textarea
+                        id="descripcion"
+                        placeholder="Escribe detalles de la compra..."
+                    ></textarea>
+
+
+                    <label>
+                        Lugar de compra
+                    </label>
+
+                    <input
+                        type="text"
+                        id="lugar"
+                        placeholder="Ej: Éxito, Olímpica, Homecenter..."
+                    >
+
+
+                    <label>
+                        Ubicación
+                    </label>
+
+                    <div class="ubicacion">
+
+                        <input
+                            type="text"
+                            id="ubicacion"
+                            placeholder="Dirección o ubicación"
+                        >
+
+                        <button
+                            type="button"
+                            id="btnUbicacion"
+                        >
+                            📍
+                        </button>
+
+                    </div>
+
+
+                    <label>
+                        Día
+                    </label>
+
+                    <select id="diaCompra">
+
+                        <option value="lunes">Lunes</option>
+                        <option value="martes">Martes</option>
+                        <option value="miercoles">Miércoles</option>
+                        <option value="jueves">Jueves</option>
+                        <option value="viernes">Viernes</option>
+                        <option value="sabado">Sábado</option>
+                        <option value="domingo">Domingo</option>
+
+                    </select>
+
+
+                    <label class="check-recordatorio">
+
+                        <input
+                            type="checkbox"
+                            id="recordatorio"
+                        >
+
+                        Recordarme esta compra
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="btn-guardar"
+                    >
+                        Guardar compra
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVEGACIÓN INFERIOR -->
+        <nav class="bottom-nav">
+
+            <button class="nav-activo">
+                🏠
+                <span>Inicio</span>
+            </button>
+
+            <button>
+                🛒
+                <span>Compras</span>
+            </button>
+
+            <button>
+                💰
+                <span>Gastos</span>
+            </button>
+
+            <button>
+                ⚙️
+                <span>Ajustes</span>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
