@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis Compras</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="app.js">
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="header">
+        <div>
+            <span class="subtitle">MI ORGANIZADOR</span>
+            <h1>Mis compras</h1>
+        </div>
+
+        <button id="deleteAll" class="round-button">
+            🗑️
+        </button>
+    </header>
+
+
+    <!-- RESUMEN PRINCIPAL -->
+
+    <section class="hero">
+
+        <div>
+            <span>GASTO DE HOY</span>
+
+            <h2 id="todayTotal">
+                $0
+            </h2>
+
+            <p id="todayPending">
+                0 compras pendientes
+            </p>
+        </div>
+
+        <div class="progress-circle">
+            <span id="percentage">
+                0%
+            </span>
+        </div>
+
+    </section>
+
+
+    <!-- ESTADÍSTICAS -->
+
+    <section class="stats">
+
+        <div class="stat">
+            <small>Total semana</small>
+            <strong id="weekTotal">$0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Realizadas</small>
+            <strong id="completedTotal">$0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Pendientes</small>
+            <strong id="pendingTotal">$0</strong>
+        </div>
+
+    </section>
+
+
+    <!-- COMPRAS -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div>
+                <small>PLANIFICACIÓN</small>
+                <h2>¿Qué debo comprar?</h2>
+            </div>
+
+            <button id="addButton" class="add-button">
+                ＋ Agregar
+            </button>
+
+        </div>
+
+
+        <!-- DÍAS -->
+
+        <div id="days" class="days"></div>
+
+
+        <!-- FILTROS -->
+
+        <div class="filters">
+
+            <select id="categoryFilter">
+
+                <option value="all">
+                    Todas las categorías
+                </option>
+
+            </select>
+
+
+            <select id="locationFilter">
+
+                <option value="all">
+                    Todas las ubicaciones
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- LISTA -->
+
+        <div id="shoppingList" class="shopping-list"></div>
+
+    </section>
+
+
+    <!-- RESUMEN -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div>
+                <small>RESUMEN</small>
+                <h2>Gastos</h2>
+            </div>
+
+        </div>
+
+
+        <div class="summary">
+
+            <div>
+                <span>Presupuesto semanal</span>
+                <strong id="budget">
+                    $0
+                </strong>
+            </div>
+
+            <div class="progress">
+                <div id="progressBar"></div>
+            </div>
+
+            <div>
+                <span>Gasto registrado</span>
+                <strong id="summarySpent">
+                    $0
+                </strong>
+            </div>
+
+            <div>
+                <span>Promedio diario</span>
+                <strong id="average">
+                    $0
+                </strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HISTORIAL -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <div>
+                <small>HISTORIAL</small>
+                <h2>Todas las anotaciones</h2>
+            </div>
+
+        </div>
+
+        <div id="history"></div>
+
+    </section>
+
+</div>
+
+
+<!-- MENÚ PARA AGREGAR -->
+
+<div id="modal" class="modal hidden">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <div>
+                <small>NUEVA ANOTACIÓN</small>
+                <h2>Agregar compra</h2>
+            </div>
+
+            <button id="closeModal">
+                ✕
+            </button>
+
+        </div>
+
+
+        <form id="purchaseForm">
+
+            <label>
+                Producto o compra
+
+                <input
+                    id="name"
+                    type="text"
+                    placeholder="Ej. Arroz"
+                    required
+                >
+
+            </label>
+
+
+            <div class="form-row">
+
+                <label>
+                    Categoría
+
+                    <select id="category"></select>
+
+                </label>
+
+
+                <label>
+                    Día
+
+                    <select id="day"></select>
+
+                </label>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <label>
+                    Precio
+
+                    <input
+                        id="price"
+                        type="number"
+                        placeholder="0"
+                        min="0"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    Ubicación
+
+                    <input
+                        id="location"
+                        type="text"
+                        placeholder="Éxito, D1..."
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+                Nota
+
+                <textarea
+                    id="note"
+                    placeholder="Cantidad, marca, tamaño..."
+                ></textarea>
+
+            </label>
+
+
+            <button class="save-button">
+                Guardar compra
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
